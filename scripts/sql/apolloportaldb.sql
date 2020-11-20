@@ -17,7 +17,7 @@ Use ApolloPortalDB;
 
 DROP TABLE IF EXISTS `App`;
 
-CREATE TABLE `App` (
+CREATE TABLE IF NOT EXISTS`App` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
   `Name` varchar(500) NOT NULL DEFAULT 'default' COMMENT '应用名',
@@ -43,7 +43,7 @@ CREATE TABLE `App` (
 
 DROP TABLE IF EXISTS `AppNamespace`;
 
-CREATE TABLE `AppNamespace` (
+CREATE TABLE IF NOT EXISTS`AppNamespace` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `Name` varchar(32) NOT NULL DEFAULT '' COMMENT 'namespace名字，注意，需要全局唯一',
   `AppId` varchar(32) NOT NULL DEFAULT '' COMMENT 'app id',
@@ -68,7 +68,7 @@ CREATE TABLE `AppNamespace` (
 
 DROP TABLE IF EXISTS `Consumer`;
 
-CREATE TABLE `Consumer` (
+CREATE TABLE IF NOT EXISTS`Consumer` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
   `Name` varchar(500) NOT NULL DEFAULT 'default' COMMENT '应用名',
@@ -93,7 +93,7 @@ CREATE TABLE `Consumer` (
 
 DROP TABLE IF EXISTS `ConsumerAudit`;
 
-CREATE TABLE `ConsumerAudit` (
+CREATE TABLE IF NOT EXISTS`ConsumerAudit` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'Consumer Id',
   `Uri` varchar(1024) NOT NULL DEFAULT '' COMMENT '访问的Uri',
@@ -112,7 +112,7 @@ CREATE TABLE `ConsumerAudit` (
 
 DROP TABLE IF EXISTS `ConsumerRole`;
 
-CREATE TABLE `ConsumerRole` (
+CREATE TABLE IF NOT EXISTS`ConsumerRole` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'Consumer Id',
   `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
@@ -134,7 +134,7 @@ CREATE TABLE `ConsumerRole` (
 
 DROP TABLE IF EXISTS `ConsumerToken`;
 
-CREATE TABLE `ConsumerToken` (
+CREATE TABLE IF NOT EXISTS`ConsumerToken` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'ConsumerId',
   `Token` varchar(128) NOT NULL DEFAULT '' COMMENT 'token',
@@ -154,7 +154,7 @@ CREATE TABLE `ConsumerToken` (
 
 DROP TABLE IF EXISTS `Favorite`;
 
-CREATE TABLE `Favorite` (
+CREATE TABLE IF NOT EXISTS`Favorite` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `UserId` varchar(32) NOT NULL DEFAULT 'default' COMMENT '收藏的用户',
   `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
@@ -175,7 +175,7 @@ CREATE TABLE `Favorite` (
 
 DROP TABLE IF EXISTS `Permission`;
 
-CREATE TABLE `Permission` (
+CREATE TABLE IF NOT EXISTS`Permission` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `PermissionType` varchar(32) NOT NULL DEFAULT '' COMMENT '权限类型',
   `TargetId` varchar(256) NOT NULL DEFAULT '' COMMENT '权限对象类型',
@@ -196,7 +196,7 @@ CREATE TABLE `Permission` (
 
 DROP TABLE IF EXISTS `Role`;
 
-CREATE TABLE `Role` (
+CREATE TABLE IF NOT EXISTS`Role` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `RoleName` varchar(256) NOT NULL DEFAULT '' COMMENT 'Role name',
   `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
@@ -216,7 +216,7 @@ CREATE TABLE `Role` (
 
 DROP TABLE IF EXISTS `RolePermission`;
 
-CREATE TABLE `RolePermission` (
+CREATE TABLE IF NOT EXISTS`RolePermission` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
   `PermissionId` int(10) unsigned DEFAULT NULL COMMENT 'Permission Id',
@@ -238,7 +238,7 @@ CREATE TABLE `RolePermission` (
 
 DROP TABLE IF EXISTS `ServerConfig`;
 
-CREATE TABLE `ServerConfig` (
+CREATE TABLE IF NOT EXISTS`ServerConfig` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `Key` varchar(64) NOT NULL DEFAULT 'default' COMMENT '配置项Key',
   `Value` varchar(2048) NOT NULL DEFAULT 'default' COMMENT '配置项值',
@@ -260,7 +260,7 @@ CREATE TABLE `ServerConfig` (
 
 DROP TABLE IF EXISTS `UserRole`;
 
-CREATE TABLE `UserRole` (
+CREATE TABLE IF NOT EXISTS`UserRole` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `UserId` varchar(128) DEFAULT '' COMMENT '用户身份标识',
   `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
@@ -280,7 +280,7 @@ CREATE TABLE `UserRole` (
 
 DROP TABLE IF EXISTS `Users`;
 
-CREATE TABLE `Users` (
+CREATE TABLE IF NOT EXISTS`Users` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `Username` varchar(64) NOT NULL DEFAULT 'default' COMMENT '用户名',
   `Password` varchar(64) NOT NULL DEFAULT 'default' COMMENT '密码',
@@ -295,7 +295,7 @@ CREATE TABLE `Users` (
 
 DROP TABLE IF EXISTS `Authorities`;
 
-CREATE TABLE `Authorities` (
+CREATE TABLE IF NOT EXISTS`Authorities` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
   `Username` varchar(64) NOT NULL,
   `Authority` varchar(50) NOT NULL,

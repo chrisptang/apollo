@@ -1,29 +1,17 @@
-*.class
-.DS_Store
-application.pid
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+.idea/*
+cf-ad-service-dao/cf-ad-service-dao.iml
+cf-ad-service-dao/target/*
+cf-ad-service-service/target/*
+cf-ad-service-client/target/*
+*.iml
+*.log
+logs/*
+target/*
+*/target/
+/target
+target/
+.idea/
+docker/mysql/
 *.jar
 *.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# Eclipse
-.classpath
-.project
-target
-.settings
-
-# Idea
-.idea
-*.iml
-
-# git
-*.orig
-.flattened-pom.xml
-
+.travis.yml
